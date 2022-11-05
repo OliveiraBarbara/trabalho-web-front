@@ -1,4 +1,37 @@
 .img {
-    width: 500px;
-    height: 300px;
+    width: 100%;
+}
+
+.conta {
+    background-color: #c68df4;
+    border-color: black;
+    width: 300px;
+    font-size: 2rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 30%;
+    margin-top: 10px;
+    border-radius: 20px/20px;
+}
+
+.botoes {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    width: 25%;
+    height: 20%;
+    background-color: #eedcff;
+    border: none;
+    /*display: flex;
+    justify-content: space-around;
+    flex-direction: row;*/
+    img {
+        width: 100%;
+        height: 100%;
+    }
 }

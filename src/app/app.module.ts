@@ -7,7 +7,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTabsModule } from '@angular/material/tabs';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,6 +17,15 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { NavComponent } from './layout/nav/nav.component';
 import { HomeComponent } from './pages/home/home.component';
+import { InstrutorComponent } from './pages/instrutor/instrutor.component';
+import { ClienteComponent } from './pages/cliente/cliente.component';
+import { PreferenciaComponent } from './pages/preferencia/preferencia.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LocalTreinamentoComponent } from './pages/local-treinamento/local-treinamento.component';
+import { ExercicioComponent } from './pages/exercicio/exercicio.component';
+import { MenuComponent } from './pages/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -27,20 +35,28 @@ import { HomeComponent } from './pages/home/home.component';
     NavComponent,
     RedDirective,
     HomeComponent,
+    InstrutorComponent,
+    ClienteComponent,
+    PreferenciaComponent,
+    LocalTreinamentoComponent,
+    ExercicioComponent,
+    MenuComponent,
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
     MatListModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatSidenavModule,
-    MatCardModule,
-    MatButtonModule,
-    MatTabsModule,
+    MatSnackBarModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
