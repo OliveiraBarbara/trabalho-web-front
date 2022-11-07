@@ -4,6 +4,7 @@
   background-color: black;
   width: 100%;
 
+
   a {
     display: flex;
     align-items: center;
@@ -24,4 +25,12 @@
       padding-right: 5px;
     }
   }
+}
+
+:host {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }

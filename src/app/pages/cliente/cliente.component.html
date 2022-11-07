@@ -1,63 +1,67 @@
 <mat-card class="card">
-  <mat-card-title>Cadastrar Cliente</mat-card-title>
-  <h3>Preencha os campos abaixo em seguida cadastre uma preferência.</h3>
+    <mat-card-title>Cadastrar Cliente</mat-card-title>
+    <h3>Preencha os campos abaixo em seguida cadastre uma preferência.</h3>
 
-  <form>
-      <mat-form-field appearance="outline" style="width: 100%">
-          <mat-label>Nome</mat-label>
-          <input matInput name="name" placeholder="Nome" formControlName="name">
-      </mat-form-field>
-      <mat-form-field appearance="outline" style="width: 30%">
-        <mat-label>CPF</mat-label>
-        <input matInput name="cpf" placeholder="CPF do Cliente" formControlName="cpf">
-      </mat-form-field>
-      <mat-form-field appearance="outline" style="width: 68%" class="espaco">
-          <mat-label>Telefone</mat-label>
-          <input matInput name="telefone" placeholder="Telefone" formControlName="telefone">
-      </mat-form-field>
-      <mat-form-field appearance="outline" style="width: 60%">
-          <mat-label>E-mail</mat-label>
-          <input matInput name="email" placeholder="Email" formControlName="email">
-      </mat-form-field>
-      <mat-form-field appearance="outline" style="width: 38%" class="espaco">
-          <mat-label>Senha</mat-label>
-          <input matInput name="senha" placeholder="Senha" formControlName="senha">
-      </mat-form-field>
-      <mat-form-field appearance="outline" style="width: 75%">
-          <mat-label>Endereço</mat-label>
-          <input matInput name="endereco" placeholder="Endereço" formControlName="endereco">
-      </mat-form-field>
-      <mat-form-field appearance="outline" style="width: 23%" class="espaco">
-          <mat-label>Número</mat-label>
-          <input matInput name="num" placeholder="Número" formControlName="num">
-      </mat-form-field>
-      <mat-form-field appearance="outline" style="width: 100%">
-        <mat-label>Complemento</mat-label>
-        <input matInput name="complemento" placeholder="Complemento" formControlName="complemento">
-      </mat-form-field>
-      <mat-form-field appearance="outline" style="width: 60%">
-          <mat-label>Bairro</mat-label>
-          <input matInput name="bairro" placeholder="Bairro" formControlName="bairro">
-      </mat-form-field>
-      <mat-form-field appearance="outline" style="width: 38%" class="espaco">
-          <mat-label>CEP</mat-label>
-          <input matInput name="cep" placeholder="CEP" formControlName="cep">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-          <mat-label>Cidade</mat-label>
-          <mat-select name="cidade" formControlName="cidade"></mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="espaco">
-          <mat-label>Estado</mat-label>
-          <mat-select name="estado" formControlName="estado">
-            <!--<mat-option *ngFor="let estado of estados" [value]="estado">
-              {{estado.sigla}}
-            </mat-option>-->
-        </mat-select>
-      </mat-form-field>
-  </form>
+    <form [formGroup]="form">
+        <mat-form-field appearance="outline" style="width: 100%">
+            <mat-label>Nome</mat-label>
+            <input matInput name="nome" formControlName="nome" placeholder="Nome">
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 30%">
+            <mat-label>CPF</mat-label>
+            <input matInput name="cpf" placeholder="CPF do Cliente" formControlName="cpf">
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 68%" class="espaco">
+            <mat-label>Telefone</mat-label>
+            <input matInput name="telefone" formControlName="telefone" placeholder="Telefone">
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 60%">
+            <mat-label>E-mail</mat-label>
+            <input matInput name="email" placeholder="Email" formControlName="email">
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 38%" class="espaco">
+            <mat-label>Senha</mat-label>
+            <input matInput name="senha" placeholder="Senha" formControlName="senha">
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 75%">
+            <mat-label>Endereço</mat-label>
+            <input matInput name="endereco" placeholder="Endereço" formControlName="endereco">
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 23%" class="espaco">
+            <mat-label>Número</mat-label>
+            <input matInput name="num" placeholder="Número" formControlName="num" type="number">
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 100%">
+            <mat-label>Complemento</mat-label>
+            <input matInput name="complemento" placeholder="Complemento" formControlName="complemento">
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 60%">
+            <mat-label>Bairro</mat-label>
+            <input matInput name="bairro" placeholder="Bairro" formControlName="bairro">
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 38%" class="espaco">
+            <mat-label>CEP</mat-label>
+            <input matInput name="cep" placeholder="CEP" formControlName="cep">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Cidade</mat-label>
+            <mat-select name="cidade" formControlName="cidade">
+              <mat-option *ngFor="let cidade of cidades" [value]="cidade">
+                  {{cidade.nome}}
+              </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="espaco">
+            <mat-label>Estado</mat-label>
+            <mat-select name="estado" formControlName="estado">
+                <mat-option *ngFor="let estado of estados" [value]="estado">
+                    {{estado.sigla}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
 
-  <button mat-raised-button>Cadastrar Preferências</button>
-  <button mat-raised-button >Cadastrar</button>
-  <button mat-raised-button (click)="cancel()" >Cancelar</button>
+    <button mat-raised-button>Cadastrar Preferências</button>
+    <button mat-raised-button (click)="save()">Cadastrar</button>
+    <button mat-raised-button (click)="cancel()">Cancelar</button>
 </mat-card>

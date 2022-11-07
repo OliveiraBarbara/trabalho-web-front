@@ -2,3 +2,13 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: #eedcff;}
+
+.msg-success{
+  background-color: #25a745;
+  color: white;
+}
+
+.msg-error{
+  background-color: #e35e6b;
+  color: white;
+}

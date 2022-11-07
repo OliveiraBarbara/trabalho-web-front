@@ -1,17 +1,17 @@
 <mat-card class="card">
-  <mat-card-title>Cadastrar sua Preferência</mat-card-title>
+    <mat-card-title>Cadastrar sua Preferência</mat-card-title>
 
-  <form>
-      <mat-form-field appearance="outline" style="width: 100%">
-          <mat-label>Material</mat-label>
-          <input matInput name="material" placeholder="Material" formControlName="material">
-      </mat-form-field>
-      <mat-form-field appearance="outline" style="width: 30%">
-        <mat-label>Período</mat-label>
-        <input matInput name="periodo" placeholder="Período" formControlName="periodo">
-      </mat-form-field>
-  </form>
+    <form>
+        <mat-form-field appearance="outline" style="width: 100%">
+            <mat-label>Material</mat-label>
+            <input matInput name="material" placeholder="Material" formControlName="material">
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 30%">
+            <mat-label>Período</mat-label>
+            <input matInput name="periodo" placeholder="Período" formControlName="periodo">
+        </mat-form-field>
+    </form>
 
-  <button mat-raised-button>Cadastrar</button>
-  <button mat-raised-button (click)="cancel()">Cancelar</button>
+    <button mat-raised-button>Cadastrar</button>
+    <button mat-raised-button (click)="cancel()">Cancelar</button>
 </mat-card>

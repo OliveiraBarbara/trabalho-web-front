@@ -1,5 +1,12 @@
+import { Cidade } from './../../models/cidade.model';
+import { CidadeService } from '../cidade/cidade.service';
+import { Cliente } from './../../models/cliente.model';
+import { ClienteService } from './cliente.service';
+import { Estado } from './../../models/estado.model';
+import { EstadoService } from './../estado/estado.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-cliente',
@@ -7,11 +14,67 @@ import { Router } from '@angular/router';
   styleUrls: ['./cliente.component.scss'],
 })
 export class ClienteComponent implements OnInit {
-  constructor(private readonly router: Router) {}
+  estados: Estado[] = [];
+  cidades: Cidade[] = [];
+  form: FormGroup = new FormGroup({});
 
-  ngOnInit(): void {}
+  constructor(
+    private readonly router: Router,
+    private readonly estadoService: EstadoService,
+    private readonly clienteService: ClienteService,
+    private readonly cidadeService: CidadeService,
+    private readonly fb: FormBuilder
+  ) {}
+
+  ngOnInit(): void {
+    this.estadoService.list().subscribe((resp) => {
+      this.estados = resp;
+      this.estados.sort((a: Estado, b: Estado) =>
+        a.sigla.localeCompare(b.sigla)
+      );
+    });
+    this.cidadeService.list().subscribe((resp) => {
+      this.cidades = resp;
+      this.cidades.sort((a: Cidade, b: Cidade) => a.nome.localeCompare(b.nome));
+    });
+    this.form = this.fb.group({
+      nome: [],
+      cpf: [],
+      telefone: [],
+      email: [],
+      senha: [],
+      endereco: [],
+      num: [],
+      bairro: [],
+      complemento: [],
+      cep: [],
+      cidade: [],
+      estado: [],
+    });
+  }
+
+  save(): void {
+    const dados = this.form.value;
+    const cliente: Cliente = {
+      ...dados,
+      enderecos: [
+        {
+          rua: dados.endereco,
+          num: parseInt(dados.num),
+          bairro: dados.bairro,
+          complemento: dados.complemento,
+          cep: dados.cep,
+          cidade: dados.cidade,
+        },
+      ],
+    };
+    this.clienteService.create(cliente).subscribe((resp) => {
+      this.clienteService.showMessage('Cliente Cadastrado com Sucesso!');
+      this.router.navigate(['/home']);
+    });
+  }
 
   cancel(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 }
