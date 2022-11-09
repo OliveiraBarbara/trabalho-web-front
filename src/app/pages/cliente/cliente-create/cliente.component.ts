@@ -1,19 +1,19 @@
-import { Instrutor } from './../../models/instrutor.model';
-import { Cidade } from './../../models/cidade.model';
-import { Estado } from './../../models/estado.model';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { InstrutorService } from './instrutor.service';
-import { EstadoService } from './../estado/estado.service';
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { CidadeService } from '../cidade/cidade.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Cidade } from 'src/app/models/cidade.model';
+import { Cliente } from 'src/app/models/cliente.model';
+import { Estado } from 'src/app/models/estado.model';
+import { CidadeService } from '../../cidade/cidade.service';
+import { EstadoService } from '../../estado/estado.service';
+import { ClienteService } from '../cliente.service';
 
 @Component({
-  selector: 'app-instrutor',
-  templateUrl: './instrutor.component.html',
-  styleUrls: ['./instrutor.component.scss'],
+  selector: 'app-cliente',
+  templateUrl: './cliente.component.html',
+  styleUrls: ['./cliente.component.scss'],
 })
-export class InstrutorComponent implements OnInit {
+export class ClienteComponent implements OnInit {
   estados: Estado[] = [];
   cidades: Cidade[] = [];
   form: FormGroup = new FormGroup({});
@@ -21,7 +21,7 @@ export class InstrutorComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly estadoService: EstadoService,
-    private readonly instrutorService: InstrutorService,
+    private readonly clienteService: ClienteService,
     private readonly cidadeService: CidadeService,
     private readonly fb: FormBuilder
   ) {}
@@ -39,7 +39,7 @@ export class InstrutorComponent implements OnInit {
     });
     this.form = this.fb.group({
       nome: [],
-      cref: [],
+      cpf: [],
       telefone: [],
       email: [],
       senha: [],
@@ -50,13 +50,12 @@ export class InstrutorComponent implements OnInit {
       cep: [],
       cidade: [],
       estado: [],
-      modalidade: [],
     });
   }
 
   save(): void {
     const dados = this.form.value;
-    const instrutor: Instrutor = {
+    const cliente: Cliente = {
       ...dados,
       enderecos: [
         {
@@ -69,13 +68,13 @@ export class InstrutorComponent implements OnInit {
         },
       ],
     };
-    this.instrutorService.create(instrutor).subscribe((resp) => {
-      this.instrutorService.showMessage('Instrutor Cadastrado com Sucesso!');
+    this.clienteService.create(cliente).subscribe((resp) => {
+      this.clienteService.showMessage('Cliente Cadastrado com Sucesso!');
       this.router.navigate(['/home']);
     });
   }
 
   cancel(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 }

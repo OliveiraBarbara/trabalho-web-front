@@ -1,7 +1,7 @@
 export interface ResponseDataList<T> {
   items: T[];
   meta: {
-    totalItens: number;
+    totalItems: number;
     itemCount: number;
     itemPerPage: number;
     totalPages: number;

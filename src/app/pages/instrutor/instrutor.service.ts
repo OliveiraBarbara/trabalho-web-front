@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class InstrutorService {
-  baseApi: string = '/instrutor/add-instrutor';
+  baseApi: string = '/instrutor';
   constructor(
     private readonly snackBar: MatSnackBar,
     private readonly http: HttpClient
@@ -18,7 +18,7 @@ export class InstrutorService {
 
   create(instrutor: Instrutor): Observable<Instrutor> {
     return this.http.post<Instrutor>(
-      environment.baseUrl + this.baseApi,
+      environment.baseUrl + this.baseApi + '/add-instrutor',
       instrutor
     );
   }

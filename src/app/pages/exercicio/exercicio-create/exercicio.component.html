@@ -1,0 +1,17 @@
+<mat-card class="card">
+    <mat-card-title>Cadastrar seu Exercício</mat-card-title>
+
+    <form [formGroup]="form">
+        <mat-form-field appearance="outline" style="width: 100%">
+            <mat-label>Tipo de Exercício</mat-label>
+            <input matInput name="tipo" placeholder="Tipo de Exercício" formControlName="tipo">
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 30%">
+            <mat-label>Tempo de Execução</mat-label>
+            <input matInput name="tempo" placeholder="Tempo de Execução" formControlName="tempo">
+        </mat-form-field>
+    </form>
+
+    <button mat-raised-button>Cadastrar</button>
+    <button mat-raised-button (click)="cancel()">Cancelar</button>
+</mat-card>

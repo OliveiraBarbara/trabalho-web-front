@@ -1,8 +1,7 @@
-import { Preferencia } from './../../models/preferencia.model';
-import { PreferenciaService } from './preferencia.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { PreferenciaService } from '../preferencia.service';
 
 @Component({
   selector: 'app-preferencia',

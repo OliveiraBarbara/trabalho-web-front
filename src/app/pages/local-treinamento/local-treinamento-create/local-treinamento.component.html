@@ -1,0 +1,62 @@
+<mat-card class="card">
+    <mat-card-title>Cadastrar um Local de Treinamento</mat-card-title>
+
+    <form [formGroup]="form">
+        <mat-form-field appearance="outline" style="width: 100%">
+            <mat-label>Nome do Local</mat-label>
+            <input matInput name="nomeLocal" placeholder="Nome do Local" formControlName="nomeLocal">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 40%">
+            <mat-label>Valor</mat-label>
+            <input matInput name="valor" placeholder="Valor" formControlName="valor">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 40%" class="espaco">
+            <mat-label>Hora de Funcionamento</mat-label>
+            <input matInput name="hora" placeholder="Hora de Funcionamento" formControlName="hora">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 75%">
+            <mat-label>Endereço</mat-label>
+            <input matInput name="endereco" placeholder="Endereço" formControlName="endereco">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 23%" class="espaco">
+            <mat-label>Número</mat-label>
+            <input matInput name="num" placeholder="Número" formControlName="num">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 100%">
+            <mat-label>Complemento</mat-label>
+            <input matInput name="complemento" placeholder="Complemento" formControlName="complemento">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 60%">
+            <mat-label>Bairro</mat-label>
+            <input matInput name="bairro" placeholder="Bairro" formControlName="bairro">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 38%" class="espaco">
+            <mat-label>CEP</mat-label>
+            <input matInput name="cep" placeholder="CEP" formControlName="cep">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Cidade</mat-label>
+            <mat-select name="cidade" formControlName="cidade"></mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="espaco">
+            <mat-label>Estado</mat-label>
+            <mat-select name="estado" formControlName="estado">
+                <!--<mat-option *ngFor="let estado of estados" [value]="estado">
+            {{estado.sigla}}
+          </mat-option>-->
+            </mat-select>
+        </mat-form-field>
+    </form>
+
+    <button mat-raised-button>Cadastrar</button>
+    <button mat-raised-button (click)="cancel()">Cancelar</button>
+</mat-card>

@@ -1,7 +1,7 @@
 <mat-card class="card">
     <mat-card-title>Cadastrar sua Preferência</mat-card-title>
 
-    <form>
+    <form [formGroup]="form">
         <mat-form-field appearance="outline" style="width: 100%">
             <mat-label>Material</mat-label>
             <input matInput name="material" placeholder="Material" formControlName="material">

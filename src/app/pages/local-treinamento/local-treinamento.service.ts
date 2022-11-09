@@ -1,38 +1,41 @@
-import { Cliente } from './../../models/cliente.model';
 import { ResponseDataList } from './../../models/shared';
+import { environment } from './../../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { environment } from 'src/environments/environment';
+import { Injectable } from '@angular/core';
+import { LocalTreinamento } from 'src/app/models/local-treinamento.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ClienteService {
-  baseApi: string = '/cliente';
+export class LocalTreinamentoService {
+  baseApi: string = '/local-treinamento';
   constructor(
     private readonly snackBar: MatSnackBar,
     private readonly http: HttpClient
   ) {}
 
-  create(cliente: Cliente): Observable<Cliente> {
-    return this.http.post<Cliente>(
-      environment.baseUrl + this.baseApi + '/add-cliente',
-      cliente
+  create(localTreinamento: LocalTreinamento): Observable<LocalTreinamento> {
+    return this.http.post<LocalTreinamento>(
+      environment.baseUrl + this.baseApi + '/add-localTreinamento',
+      localTreinamento
     );
   }
 
-  findById(id: number): Observable<Cliente> {
-    return this.http.get<Cliente>(
+  findById(id: number): Observable<LocalTreinamento> {
+    return this.http.get<LocalTreinamento>(
       environment.baseUrl + this.baseApi + `/${id}`
     );
   }
 
-  update(id: number, cliente: Cliente): Observable<Cliente> {
-    return this.http.patch<Cliente>(
+  update(
+    id: number,
+    localTreinamento: LocalTreinamento
+  ): Observable<LocalTreinamento> {
+    return this.http.patch<LocalTreinamento>(
       environment.baseUrl + this.baseApi + `/${id}`,
-      cliente
+      localTreinamento
     );
   }
 
@@ -40,13 +43,13 @@ export class ClienteService {
     page: number,
     limit: number,
     search?: string
-  ): Observable<ResponseDataList<Cliente>> {
+  ): Observable<ResponseDataList<LocalTreinamento>> {
     let params = new HttpParams().set('page', page).set('limit', limit);
     if (search?.trim()) {
       params = params.set('search', search.trim());
     }
-    return this.http.get<ResponseDataList<Cliente>>(
-      environment.baseUrl + this.baseApi + '/ver-cliente',
+    return this.http.get<ResponseDataList<LocalTreinamento>>(
+      environment.baseUrl + this.baseApi,
       { params }
     );
   }

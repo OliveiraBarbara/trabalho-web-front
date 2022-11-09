@@ -1,38 +1,38 @@
-import { Cliente } from './../../models/cliente.model';
 import { ResponseDataList } from './../../models/shared';
+import { environment } from './../../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { environment } from 'src/environments/environment';
+import { Injectable } from '@angular/core';
+import { Exercicio } from 'src/app/models/exercicio.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ClienteService {
-  baseApi: string = '/cliente';
+export class ExercicioService {
+  baseApi: string = '/exercicio';
   constructor(
     private readonly snackBar: MatSnackBar,
     private readonly http: HttpClient
   ) {}
 
-  create(cliente: Cliente): Observable<Cliente> {
-    return this.http.post<Cliente>(
-      environment.baseUrl + this.baseApi + '/add-cliente',
-      cliente
+  create(exercicio: Exercicio): Observable<Exercicio> {
+    return this.http.post<Exercicio>(
+      environment.baseUrl + this.baseApi + '/add-exercicio',
+      exercicio
     );
   }
 
-  findById(id: number): Observable<Cliente> {
-    return this.http.get<Cliente>(
+  findById(id: number): Observable<Exercicio> {
+    return this.http.get<Exercicio>(
       environment.baseUrl + this.baseApi + `/${id}`
     );
   }
 
-  update(id: number, cliente: Cliente): Observable<Cliente> {
-    return this.http.patch<Cliente>(
+  update(id: number, exercicio: Exercicio): Observable<Exercicio> {
+    return this.http.patch<Exercicio>(
       environment.baseUrl + this.baseApi + `/${id}`,
-      cliente
+      exercicio
     );
   }
 
@@ -40,13 +40,13 @@ export class ClienteService {
     page: number,
     limit: number,
     search?: string
-  ): Observable<ResponseDataList<Cliente>> {
+  ): Observable<ResponseDataList<Exercicio>> {
     let params = new HttpParams().set('page', page).set('limit', limit);
     if (search?.trim()) {
       params = params.set('search', search.trim());
     }
-    return this.http.get<ResponseDataList<Cliente>>(
-      environment.baseUrl + this.baseApi + '/ver-cliente',
+    return this.http.get<ResponseDataList<Exercicio>>(
+      environment.baseUrl + this.baseApi + '/ver-exercicio',
       { params }
     );
   }

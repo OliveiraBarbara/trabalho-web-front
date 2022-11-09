@@ -6,6 +6,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,12 +24,13 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { NavComponent } from './layout/nav/nav.component';
 import { HomeComponent } from './pages/home/home.component';
-import { InstrutorComponent } from './pages/instrutor/instrutor.component';
-import { ClienteComponent } from './pages/cliente/cliente.component';
-import { PreferenciaComponent } from './pages/preferencia/preferencia.component';
-import { LocalTreinamentoComponent } from './pages/local-treinamento/local-treinamento.component';
-import { ExercicioComponent } from './pages/exercicio/exercicio.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { ClienteListComponent } from './pages/cliente/cliente-list/cliente-list.component';
+import { ClienteComponent } from './pages/cliente/cliente-create/cliente.component';
+import { ExercicioComponent } from './pages/exercicio/exercicio-create/exercicio.component';
+import { InstrutorComponent } from './pages/instrutor/instrutor-create/instrutor.component';
+import { LocalTreinamentoComponent } from './pages/local-treinamento/local-treinamento-create/local-treinamento.component';
+import { PreferenciaComponent } from './pages/preferencia/preferencia-create/preferencia.component';
 
 @NgModule({
   declarations: [
@@ -41,22 +46,27 @@ import { MenuComponent } from './pages/menu/menu.component';
     LocalTreinamentoComponent,
     ExercicioComponent,
     MenuComponent,
+    ClienteListComponent,
   ],
   imports: [
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatSnackBarModule,
+    MatButtonModule,
+    MatCardModule,
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatCardModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatSnackBarModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

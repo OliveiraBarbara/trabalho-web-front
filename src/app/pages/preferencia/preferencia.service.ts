@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class PreferenciaService {
-  baseApi: string = '/cliente/add-pref';
+  baseApi: string = '/preferencia';
   constructor(
     private readonly snackBar: MatSnackBar,
     private readonly http: HttpClient
@@ -18,7 +18,7 @@ export class PreferenciaService {
 
   create(preferencia: Preferencia): Observable<Preferencia> {
     return this.http.post<Preferencia>(
-      environment.baseUrl + this.baseApi,
+      environment.baseUrl + this.baseApi + '/add-pref',
       preferencia
     );
   }
