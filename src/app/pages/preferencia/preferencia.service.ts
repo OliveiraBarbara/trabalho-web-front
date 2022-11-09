@@ -46,7 +46,7 @@ export class PreferenciaService {
       params = params.set('search', search.trim());
     }
     return this.http.get<ResponseDataList<Preferencia>>(
-      environment.baseUrl + this.baseApi,
+      environment.baseUrl + this.baseApi + '/ver-preferencia',
       { params }
     );
   }

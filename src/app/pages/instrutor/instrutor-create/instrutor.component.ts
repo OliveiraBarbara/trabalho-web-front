@@ -49,7 +49,6 @@ export class InstrutorComponent implements OnInit {
       complemento: [],
       cep: [],
       cidade: [],
-      estado: [],
       modalidade: [],
     });
   }

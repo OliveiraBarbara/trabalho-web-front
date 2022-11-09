@@ -1,5 +1,4 @@
-import { ClienteService } from './../cliente.service';
-import { Cliente } from './../../../models/cliente.model';
+import { LocalTreinamentoService } from './../local-treinamento.service';
 import {
   AfterViewInit,
   Component,
@@ -7,44 +6,51 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import {
-  catchError,
-  debounceTime,
-  distinctUntilChanged,
-  map,
-  merge,
-  of,
-  startWith,
-  Subject,
   Subscription,
+  Subject,
+  distinctUntilChanged,
+  debounceTime,
+  merge,
+  startWith,
   switchMap,
+  catchError,
+  of,
+  map,
 } from 'rxjs';
-import { ClienteDeleteComponent } from '../cliente-delete/cliente-delete.component';
-import { DialogComponent } from '../dialog/dialog.component';
+import { LocalTreinamento } from 'src/app/models/local-treinamento.model';
 
 @Component({
-  selector: 'app-cliente-list',
-  templateUrl: './cliente-list.component.html',
-  styleUrls: ['./cliente-list.component.scss'],
+  selector: 'app-local-treinamento-list',
+  templateUrl: './local-treinamento-list.component.html',
+  styleUrls: ['./local-treinamento-list.component.scss'],
 })
-export class ClienteListComponent implements OnInit, AfterViewInit, OnDestroy {
+export class LocalTreinamentoListComponent
+  implements OnInit, AfterViewInit, OnDestroy
+{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   isLoadingResults: boolean = true;
-  data: Cliente[] = [];
+  data: LocalTreinamento[] = [];
   resultsLength: number = 0;
   subscriptions: Subscription[] = [];
-  displayedColumns: string[] = ['id', 'cpf', 'nome', 'telefone', 'actions'];
+  displayedColumns: string[] = [
+    'idLocal',
+    'nome',
+    'valor',
+    'horaFunc',
+    'actions',
+  ];
   form!: FormGroup;
   refresh: Subject<boolean> = new Subject();
 
   constructor(
     private readonly router: Router,
-    private readonly clienteService: ClienteService,
+    private readonly localTreinamentoService: LocalTreinamentoService,
     private readonly fb: FormBuilder,
     private readonly dialog: MatDialog
   ) {}
@@ -71,7 +77,7 @@ export class ClienteListComponent implements OnInit, AfterViewInit, OnDestroy {
         switchMap(() => {
           this.isLoadingResults = true;
           const search = this.form.get('search')?.value;
-          return this.clienteService
+          return this.localTreinamentoService
             .list(this.paginator.pageIndex + 1, this.paginator.pageSize, search)
             .pipe(catchError(() => of(null)));
         }),
@@ -94,28 +100,41 @@ export class ClienteListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
-  navigateToClienteCreate(): void {
-    this.router.navigate(['/cliente/cadastro']);
+  navigateToLocalTreinamentoCreate(): void {
+    this.router.navigate(['/localTreinamento/cadastro']);
   }
 
-  openDeleteDialog(cliente: Cliente): void {
-    const dialogRef = this.dialog.open(ClienteDeleteComponent, {
-      data: cliente,
+  /*openDeleteDialog(localTreinamento: LocalTreinamento): void {
+    const dialogRef = this.dialog.open(LocalTreinamentoDeleteComponent, {
+      data: localTreinamento,
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.clienteService.delete(cliente.id as number).subscribe(() => {
-          this.paginator.firstPage();
-          this.refresh.next(true);
-          this.clienteService.showMessage('Cliente excluído com sucesso!');
-        });
+        this.localTreinamentoService
+          .delete(localTreinamento.id as number)
+          .subscribe(() => {
+            this.paginator.firstPage();
+            this.refresh.next(true);
+            this.localTreinamentoService.showMessage(
+              'Local de Treinamento excluído com sucesso!'
+            );
+          });
       }
     });
   }
 
-  openDialog(cliente: Cliente): void {
-    let dialogRef = this.dialog.open(DialogComponent, {
-      data: cliente,
+  openSearchDialog(localTreinamento: LocalTreinamento): void {
+    const dialogRef = this.dialog.open(LocalTreinamentoDeleteComponent, {
+      data: localTreinamento,
     });
-  }
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.localTreinamentoService.delete(localTreinamento.id as number).subscribe(() => {
+          this.paginator.firstPage();
+          this.refresh.next(true);
+          this.localTreinamentoService.showMessage('Cliente excluído com sucesso!');
+        });
+      }
+    });
+  }*/
 }

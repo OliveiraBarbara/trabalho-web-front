@@ -1,3 +1,5 @@
+import { InstrutorListComponent } from './pages/instrutor/instrutor-list/instrutor-list.component';
+import { ClienteEditComponent } from './pages/cliente/cliente-edit/cliente-edit.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
@@ -8,6 +10,9 @@ import { ExercicioComponent } from './pages/exercicio/exercicio-create/exercicio
 import { InstrutorComponent } from './pages/instrutor/instrutor-create/instrutor.component';
 import { PreferenciaComponent } from './pages/preferencia/preferencia-create/preferencia.component';
 import { LocalTreinamentoComponent } from './pages/local-treinamento/local-treinamento-create/local-treinamento.component';
+import { LocalTreinamentoListComponent } from './pages/local-treinamento/local-treinamento-list/local-treinamento-list.component';
+import { ExercicioListComponent } from './pages/exercicio/exercicio-list/exercicio-list.component';
+import { PreferenciaListComponent } from './pages/preferencia/preferencia-list/preferencia-list.component';
 
 const routes: Routes = [
   {
@@ -17,12 +22,44 @@ const routes: Routes = [
       { path: 'menu', component: MenuComponent },
     ],
   },
-  { path: 'cadastro-cli', component: ClienteComponent },
-  { path: 'lista-cli', component: ClienteListComponent },
-  { path: 'cadastro-instrutor', component: InstrutorComponent },
-  { path: 'preferencia', component: PreferenciaComponent },
-  { path: 'exercicio', component: ExercicioComponent },
-  { path: 'local', component: LocalTreinamentoComponent },
+  {
+    path: 'cliente',
+    children: [
+      { path: '', component: ClienteListComponent },
+      { path: 'cadastro', component: ClienteComponent },
+      { path: ':id/edit', component: ClienteEditComponent },
+    ],
+  },
+  {
+    path: 'instrutor',
+    children: [
+      { path: '', component: InstrutorListComponent },
+      { path: 'cadastro', component: InstrutorComponent },
+    ],
+  },
+  {
+    path: 'preferencia',
+    children: [
+      { path: '', component: PreferenciaListComponent },
+      { path: 'cadastro', component: PreferenciaComponent },
+    ],
+  },
+
+  {
+    path: 'exercicio',
+    children: [
+      { path: '', component: ExercicioListComponent },
+      { path: 'cadastro', component: ExercicioComponent },
+    ],
+  },
+
+  {
+    path: 'localTreinamento',
+    children: [
+      { path: '', component: LocalTreinamentoListComponent },
+      { path: 'cadastro', component: LocalTreinamentoComponent },
+    ],
+  },
 ];
 
 @NgModule({

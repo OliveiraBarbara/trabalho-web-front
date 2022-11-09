@@ -49,7 +49,7 @@ export class LocalTreinamentoService {
       params = params.set('search', search.trim());
     }
     return this.http.get<ResponseDataList<LocalTreinamento>>(
-      environment.baseUrl + this.baseApi,
+      environment.baseUrl + this.baseApi + '/ver-localTreinamento',
       { params }
     );
   }

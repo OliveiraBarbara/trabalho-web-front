@@ -25,12 +25,16 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { NavComponent } from './layout/nav/nav.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './pages/menu/menu.component';
-import { ClienteListComponent } from './pages/cliente/cliente-list/cliente-list.component';
-import { ClienteComponent } from './pages/cliente/cliente-create/cliente.component';
 import { ExercicioComponent } from './pages/exercicio/exercicio-create/exercicio.component';
 import { InstrutorComponent } from './pages/instrutor/instrutor-create/instrutor.component';
 import { LocalTreinamentoComponent } from './pages/local-treinamento/local-treinamento-create/local-treinamento.component';
 import { PreferenciaComponent } from './pages/preferencia/preferencia-create/preferencia.component';
+import { InstrutorListComponent } from './pages/instrutor/instrutor-list/instrutor-list.component';
+import { LocalTreinamentoListComponent } from './pages/local-treinamento/local-treinamento-list/local-treinamento-list.component';
+import { PreferenciaListComponent } from './pages/preferencia/preferencia-list/preferencia-list.component';
+import { ExercicioListComponent } from './pages/exercicio/exercicio-list/exercicio-list.component';
+import { InstrutorDeleteComponent } from './pages/instrutor/instrutor-delete/instrutor-delete.component';
+import { ClienteModule } from './pages/cliente/cliente.module';
 
 @NgModule({
   declarations: [
@@ -41,12 +45,15 @@ import { PreferenciaComponent } from './pages/preferencia/preferencia-create/pre
     RedDirective,
     HomeComponent,
     InstrutorComponent,
-    ClienteComponent,
     PreferenciaComponent,
     LocalTreinamentoComponent,
     ExercicioComponent,
     MenuComponent,
-    ClienteListComponent,
+    InstrutorListComponent,
+    LocalTreinamentoListComponent,
+    PreferenciaListComponent,
+    ExercicioListComponent,
+    InstrutorDeleteComponent,
   ],
   imports: [
     MatDialogModule,
@@ -67,6 +74,7 @@ import { PreferenciaComponent } from './pages/preferencia/preferencia-create/pre
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ClienteModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

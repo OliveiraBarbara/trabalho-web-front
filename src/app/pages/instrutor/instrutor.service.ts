@@ -46,7 +46,7 @@ export class InstrutorService {
       params = params.set('search', search.trim());
     }
     return this.http.get<ResponseDataList<Instrutor>>(
-      environment.baseUrl + this.baseApi,
+      environment.baseUrl + this.baseApi + '/ver-instrutor',
       { params }
     );
   }

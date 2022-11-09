@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cidade } from 'src/app/models/cidade.model';
 import { Cliente } from 'src/app/models/cliente.model';
 import { Estado } from 'src/app/models/estado.model';
@@ -14,42 +14,33 @@ import { ClienteService } from '../cliente.service';
   styleUrls: ['./cliente.component.scss'],
 })
 export class ClienteComponent implements OnInit {
-  estados: Estado[] = [];
   cidades: Cidade[] = [];
   form: FormGroup = new FormGroup({});
 
   constructor(
     private readonly router: Router,
-    private readonly estadoService: EstadoService,
     private readonly clienteService: ClienteService,
     private readonly cidadeService: CidadeService,
     private readonly fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
-    this.estadoService.list().subscribe((resp) => {
-      this.estados = resp;
-      this.estados.sort((a: Estado, b: Estado) =>
-        a.sigla.localeCompare(b.sigla)
-      );
-    });
     this.cidadeService.list().subscribe((resp) => {
       this.cidades = resp;
       this.cidades.sort((a: Cidade, b: Cidade) => a.nome.localeCompare(b.nome));
     });
     this.form = this.fb.group({
-      nome: [],
-      cpf: [],
-      telefone: [],
-      email: [],
-      senha: [],
-      endereco: [],
-      num: [],
-      bairro: [],
+      nome: [null, [Validators.required]],
+      cpf: [null, [Validators.required]],
+      telefone: [null, [Validators.required]],
+      email: [null, [Validators.required]],
+      senha: [null, [Validators.required]],
+      endereco: [null, [Validators.required]],
+      num: [null, [Validators.required]],
+      bairro: [null, [Validators.required]],
       complemento: [],
-      cep: [],
-      cidade: [],
-      estado: [],
+      cep: [null, [Validators.required]],
+      cidade: [null, [Validators.required]],
     });
   }
 

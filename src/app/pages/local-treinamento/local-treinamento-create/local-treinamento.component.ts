@@ -29,7 +29,6 @@ export class LocalTreinamentoComponent implements OnInit {
       complemento: [],
       cep: [],
       cidade: [],
-      estado: [],
     });
   }
   save(): void {
@@ -51,11 +50,11 @@ export class LocalTreinamentoComponent implements OnInit {
       this.localTreinamentoService.showMessage(
         'Local de Treinamento Cadastrado com Sucesso!'
       );
-      this.router.navigate(['/home']);
+      this.router.navigate(['/localTreinamento']);
     });
   }
 
   cancel(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/localTreinamento']);
   }
 }

@@ -1,5 +1,4 @@
-import { ClienteService } from './../cliente.service';
-import { Cliente } from './../../../models/cliente.model';
+import { InstrutorDeleteComponent } from './../instrutor-delete/instrutor-delete.component';
 import {
   AfterViewInit,
   Component,
@@ -23,28 +22,37 @@ import {
   Subscription,
   switchMap,
 } from 'rxjs';
-import { ClienteDeleteComponent } from '../cliente-delete/cliente-delete.component';
-import { DialogComponent } from '../dialog/dialog.component';
+import { Instrutor } from 'src/app/models/instrutor.model';
+import { InstrutorService } from '../instrutor.service';
 
 @Component({
   selector: 'app-cliente-list',
-  templateUrl: './cliente-list.component.html',
-  styleUrls: ['./cliente-list.component.scss'],
+  templateUrl: './instrutor-list.component.html',
+  styleUrls: ['./instrutor-list.component.scss'],
 })
-export class ClienteListComponent implements OnInit, AfterViewInit, OnDestroy {
+export class InstrutorListComponent
+  implements OnInit, AfterViewInit, OnDestroy
+{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   isLoadingResults: boolean = true;
-  data: Cliente[] = [];
+  data: Instrutor[] = [];
   resultsLength: number = 0;
   subscriptions: Subscription[] = [];
-  displayedColumns: string[] = ['id', 'cpf', 'nome', 'telefone', 'actions'];
+  displayedColumns: string[] = [
+    'id',
+    'cref',
+    'nome',
+    'telefone',
+    'modalidade',
+    'actions',
+  ];
   form!: FormGroup;
   refresh: Subject<boolean> = new Subject();
 
   constructor(
     private readonly router: Router,
-    private readonly clienteService: ClienteService,
+    private readonly instrutorService: InstrutorService,
     private readonly fb: FormBuilder,
     private readonly dialog: MatDialog
   ) {}
@@ -71,7 +79,7 @@ export class ClienteListComponent implements OnInit, AfterViewInit, OnDestroy {
         switchMap(() => {
           this.isLoadingResults = true;
           const search = this.form.get('search')?.value;
-          return this.clienteService
+          return this.instrutorService
             .list(this.paginator.pageIndex + 1, this.paginator.pageSize, search)
             .pipe(catchError(() => of(null)));
         }),
@@ -94,28 +102,31 @@ export class ClienteListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
-  navigateToClienteCreate(): void {
-    this.router.navigate(['/cliente/cadastro']);
+  navigateToInstrutorCreate(): void {
+    this.router.navigate(['/instrutor/cadastro']);
   }
 
-  openDeleteDialog(cliente: Cliente): void {
-    const dialogRef = this.dialog.open(ClienteDeleteComponent, {
-      data: cliente,
+  openDeleteDialog(instrutor: Instrutor): void {
+    const dialogRef = this.dialog.open(InstrutorDeleteComponent, {
+      data: instrutor,
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.clienteService.delete(cliente.id as number).subscribe(() => {
+        this.instrutorService.delete(instrutor.id as number).subscribe(() => {
           this.paginator.firstPage();
           this.refresh.next(true);
-          this.clienteService.showMessage('Cliente excluído com sucesso!');
+          this.instrutorService.showMessage('Instrutor excluído com sucesso!');
         });
       }
     });
   }
 
-  openDialog(cliente: Cliente): void {
-    let dialogRef = this.dialog.open(DialogComponent, {
-      data: cliente,
-    });
+  openDialog(instrutor: Instrutor): void {
+    // let dialogRef = this.dialog.open(DialogComponent, {
+    //   data: instrutor,
+    // });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   this.data = result;
+    // });
   }
 }

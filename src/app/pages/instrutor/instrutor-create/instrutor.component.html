@@ -42,30 +42,21 @@
             <input matInput name="complemento" placeholder="Complemento" formControlName="complemento">
         </mat-form-field>
 
-        <mat-form-field appearance="outline" style="width: 60%">
+        <mat-form-field appearance="outline" style="width: 40%">
             <mat-label>Bairro</mat-label>
             <input matInput name="bairro" placeholder="Bairro" formControlName="bairro">
         </mat-form-field>
 
-        <mat-form-field appearance="outline" style="width: 38%" class="espaco">
+        <mat-form-field appearance="outline" style="width: 25%" class="espaco">
             <mat-label>CEP</mat-label>
             <input matInput name="cep" placeholder="CEP" formControlName="cep">
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" style="width: 31%" class="espaco">
             <mat-label>Cidade</mat-label>
             <mat-select name="cidade" formControlName="cidade">
                 <mat-option *ngFor="let cidade of cidades" [value]="cidade">
                     {{cidade.nome}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" class="espaco">
-            <mat-label>Estado</mat-label>
-            <mat-select name="estado" formControlName="estado">
-                <mat-option *ngFor="let estado of estados" [value]="estado">
-                    {{estado.sigla}}
                 </mat-option>
             </mat-select>
         </mat-form-field>

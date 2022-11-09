@@ -36,6 +36,12 @@ export class ClienteService {
     );
   }
 
+  delete(id: number): Observable<boolean> {
+    return this.http.delete<boolean>(
+      environment.baseUrl + this.baseApi + `/${id}`
+    );
+  }
+
   list(
     page: number,
     limit: number,
@@ -48,12 +54,6 @@ export class ClienteService {
     return this.http.get<ResponseDataList<Cliente>>(
       environment.baseUrl + this.baseApi + '/ver-cliente',
       { params }
-    );
-  }
-
-  delete(id: number): Observable<boolean> {
-    return this.http.delete<boolean>(
-      environment.baseUrl + this.baseApi + `/${id}`
     );
   }
 
