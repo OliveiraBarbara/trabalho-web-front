@@ -1,0 +1,69 @@
+<mat-card class="card">
+  <mat-card-title>Cadastrar Administradores</mat-card-title>
+
+  <form [formGroup]="form">
+      <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Nome</mat-label>
+          <input matInput name="nome" formControlName="nome" placeholder="Nome">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 30%">
+          <mat-label>Número do Registro</mat-label>
+          <input matInput name="numReg" placeholder="Número do Registro do Administrador" formControlName="numReg">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 68%" class="espaco">
+          <mat-label>Telefone</mat-label>
+          <input matInput name="telefone" formControlName="telefone" placeholder="Telefone">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 60%">
+          <mat-label>E-mail</mat-label>
+          <input matInput name="email" placeholder="Email" formControlName="email">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 38%" class="espaco">
+          <mat-label>Senha</mat-label>
+          <input matInput name="senha" placeholder="Senha" formControlName="senha">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 45%">
+        <mat-label>Cargo</mat-label>
+        <input matInput name="cargo" placeholder="Cargo" formControlName="cargo">
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 30%" class="espaco">
+        <mat-label>Formação</mat-label>
+        <input matInput name="formacao" placeholder="Formação" formControlName="formacao">
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 21%" class="espaco">
+      <mat-label>Horário de Trabalho</mat-label>
+      <input matInput name="horaTrabalho" placeholder="Horário de Trabalho" formControlName="horaTrabalho">
+  </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 75%">
+          <mat-label>Endereço</mat-label>
+          <input matInput name="endereco" placeholder="Endereço" formControlName="endereco">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 23%" class="espaco">
+          <mat-label>Número</mat-label>
+          <input matInput name="num" placeholder="Número" formControlName="num" type="number">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Complemento</mat-label>
+          <input matInput name="complemento" placeholder="Complemento" formControlName="complemento">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 40%">
+          <mat-label>Bairro</mat-label>
+          <input matInput name="bairro" placeholder="Bairro" formControlName="bairro">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 25%" class="espaco">
+          <mat-label>CEP</mat-label>
+          <input matInput name="cep" placeholder="CEP" formControlName="cep">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 31%" class="espaco">
+          <mat-label>Cidade</mat-label>
+          <mat-select name="cidade" formControlName="cidade">
+              <mat-option *ngFor="let cidade of cidades" [value]="cidade">
+                  {{cidade.nome}}
+              </mat-option>
+          </mat-select>
+      </mat-form-field>
+  </form>
+
+  <button mat-raised-button (click)="save()" color="primary">Cadastrar</button>
+  <button mat-raised-button (click)="cancel()">Cancelar</button>
+</mat-card>

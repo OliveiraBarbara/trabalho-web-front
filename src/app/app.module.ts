@@ -35,6 +35,17 @@ import { PreferenciaListComponent } from './pages/preferencia/preferencia-list/p
 import { ExercicioListComponent } from './pages/exercicio/exercicio-list/exercicio-list.component';
 import { InstrutorDeleteComponent } from './pages/instrutor/instrutor-delete/instrutor-delete.component';
 import { ClienteModule } from './pages/cliente/cliente.module';
+import { AdminListComponent } from './pages/admin/admin-list/admin-list.component';
+import { AdminCreateComponent } from './pages/admin/admin-create/admin-create.component';
+import { AdminEditComponent } from './pages/admin/admin-edit/admin-edit.component';
+import { AdminDeleteComponent } from './pages/admin/admin-delete/admin-delete.component';
+import { InstrutorEditComponent } from './pages/instrutor/instrutor-edit/instrutor-edit.component';
+import { PreferenciaEditComponent } from './pages/preferencia/preferencia-edit/preferencia-edit.component';
+import { ExercicioEditComponent } from './pages/exercicio/exercicio-edit/exercicio-edit.component';
+import { LocalTreinamentoEditComponent } from './pages/local-treinamento/local-treinamento-edit/local-treinamento-edit.component';
+import { ExercicioDeleteComponent } from './pages/exercicio/exercicio-delete/exercicio-delete.component';
+import { LocalTreinamentoDeleteComponent } from './pages/local-treinamento/local-treinamento-delete/local-treinamento-delete.component';
+import { PreferenciaDeleteComponent } from './pages/preferencia/preferencia-delete/preferencia-delete.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +65,17 @@ import { ClienteModule } from './pages/cliente/cliente.module';
     PreferenciaListComponent,
     ExercicioListComponent,
     InstrutorDeleteComponent,
+    AdminListComponent,
+    AdminCreateComponent,
+    AdminEditComponent,
+    AdminDeleteComponent,
+    InstrutorEditComponent,
+    PreferenciaEditComponent,
+    ExercicioEditComponent,
+    LocalTreinamentoEditComponent,
+    ExercicioDeleteComponent,
+    LocalTreinamentoDeleteComponent,
+    PreferenciaDeleteComponent,
   ],
   imports: [
     MatDialogModule,

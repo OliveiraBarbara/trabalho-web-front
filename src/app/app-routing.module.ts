@@ -1,3 +1,10 @@
+import { LocalTreinamentoEditComponent } from './pages/local-treinamento/local-treinamento-edit/local-treinamento-edit.component';
+import { ExercicioEditComponent } from './pages/exercicio/exercicio-edit/exercicio-edit.component';
+import { PreferenciaEditComponent } from './pages/preferencia/preferencia-edit/preferencia-edit.component';
+import { InstrutorEditComponent } from './pages/instrutor/instrutor-edit/instrutor-edit.component';
+import { AdminEditComponent } from './pages/admin/admin-edit/admin-edit.component';
+import { AdminCreateComponent } from './pages/admin/admin-create/admin-create.component';
+import { AdminListComponent } from './pages/admin/admin-list/admin-list.component';
 import { InstrutorListComponent } from './pages/instrutor/instrutor-list/instrutor-list.component';
 import { ClienteEditComponent } from './pages/cliente/cliente-edit/cliente-edit.component';
 import { NgModule } from '@angular/core';
@@ -23,6 +30,14 @@ const routes: Routes = [
     ],
   },
   {
+    path: 'admin',
+    children: [
+      { path: '', component: AdminListComponent },
+      { path: 'cadastro', component: AdminCreateComponent },
+      { path: ':id/edit', component: AdminEditComponent },
+    ],
+  },
+  {
     path: 'cliente',
     children: [
       { path: '', component: ClienteListComponent },
@@ -35,6 +50,7 @@ const routes: Routes = [
     children: [
       { path: '', component: InstrutorListComponent },
       { path: 'cadastro', component: InstrutorComponent },
+      { path: ':id/edit', component: InstrutorEditComponent },
     ],
   },
   {
@@ -42,22 +58,23 @@ const routes: Routes = [
     children: [
       { path: '', component: PreferenciaListComponent },
       { path: 'cadastro', component: PreferenciaComponent },
+      { path: ':id/edit', component: PreferenciaEditComponent },
     ],
   },
-
   {
     path: 'exercicio',
     children: [
       { path: '', component: ExercicioListComponent },
       { path: 'cadastro', component: ExercicioComponent },
+      { path: ':id/edit', component: ExercicioEditComponent },
     ],
   },
-
   {
     path: 'localTreinamento',
     children: [
       { path: '', component: LocalTreinamentoListComponent },
       { path: 'cadastro', component: LocalTreinamentoComponent },
+      { path: ':id/edit', component: LocalTreinamentoEditComponent },
     ],
   },
 ];
